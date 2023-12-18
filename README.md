@@ -1,17 +1,17 @@
 # grader
 
 <p>
-<img alt="A 1970s cartoon style illustration of a cute robot sorting potatoes" 
-  src="https://github.com/cablehead/grader/assets/1394/d35f6286-f6b9-4c87-b014-10948f12c8f8" 
+<img alt="A 1970s cartoon style illustration of a cute robot sorting potatoes"
+  src="https://github.com/cablehead/grader/assets/1394/d35f6286-f6b9-4c87-b014-10948f12c8f8"
   width="200">
-</p>
-
 This CLI tool is designed to effectively perform a binary sort of large text
 files by categorizing lines into two bins based on user-defined criteria. It
 operates by streaming lines to a child process (such as `grep`) and then sorts
 these lines based on their echo response from the child process. Lines echoed
 back are placed into 'bin1', ideally configured for the most expected case,
 while lines not echoed back are categorized into 'bin2'.
+</p>
+
 
 This sorting mechanism relies on waiting to see an echoed line before assuming
 any omitted lines belong to 'bin2', making it important to configure 'bin1' for

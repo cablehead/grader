@@ -3,5 +3,13 @@ name = "grader"
 version = "0.1.0"
 edition = "2021"
 
+description = "Stream-based CLI for binary sorting text files via a given shell command."
+license = "MIT"
+repository = "https://github.com/cablehead/grader"
+readme = "README.md"
+homepage = "https://github.com/cablehead/grader"
+keywords = ["cli", "sort", "stream"]
+categories = ["text-processing", "command-line-utilities"]
+
 [dependencies]
 clap = { version = "4.4.11", features = ["derive"] }
