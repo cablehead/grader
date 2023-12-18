@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{self, BufRead, Write, BufWriter};
+use std::io::{self, BufRead, BufWriter, Write};
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
 use std::sync::mpsc;
@@ -9,17 +9,18 @@ use clap::Parser;
 
 fn main() -> io::Result<()> {
     #[derive(Parser, Debug, Clone)]
-    #[clap(author, version, about, long_about = None)]
+    #[clap(author, version, about = "Binary sorter for text files. Lines are sorted into two bins based on child process response", long_about = None)]
     struct Args {
-        #[clap(value_parser)]
+        #[clap(value_parser, help = "Path for output bin 1 (for echoed lines)")]
         bin1: PathBuf,
 
-        #[clap(value_parser)]
+        #[clap(value_parser, help = "Path for output bin 2 (for non-echoed lines)")]
         bin2: PathBuf,
 
-        #[clap(value_parser)]
+        #[clap(value_parser, help = "Command to execute for processing lines")]
         command: String,
-        #[clap(value_parser)]
+
+        #[clap(value_parser, help = "Arguments for the command")]
         args: Vec<String>,
     }
 
@@ -38,7 +39,7 @@ fn main() -> io::Result<()> {
         .spawn()?;
 
     let mut child_stdin = child.stdin.take().expect("Failed to open stdin");
-    let mut child_stdout = child.stdout.take().expect("Failed to open stdout");
+    let child_stdout = child.stdout.take().expect("Failed to open stdout");
 
     let writer_thread = thread::spawn(move || {
         let stdin = io::stdin();
