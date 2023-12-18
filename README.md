@@ -19,6 +19,28 @@ the more frequent case to avoid buffering. The tool is particularly useful for
 tasks like parsing log files or any large dataset where binary categorization
 is helpful for organization and analysis.
 
+## Install
+
+```shell
+
+cargo install grader
+
+```
+
+## Usage
+
+```
+Binary sorter for text files. Lines are sorted into two bins based on child process response
+
+Usage: grader <BIN1> <BIN2> <COMMAND> [ARGS]...
+
+Arguments:
+  <BIN1>     Path for output bin 1 (for echoed lines)
+  <BIN2>     Path for output bin 2 (for non-echoed lines)
+  <COMMAND>  Command to execute for processing lines
+  [ARGS]...  Arguments for the command
+```
+
 ## Example
 
 
